@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Вот это вид! Карта высот, уклонов, видимости и красоты рельефа. Просмотр gpx + профиль рельефа.</title>
+        <meta name="description" content="Карта красивых мест и уклонов рельефа Алтая, Хакасии, Казахстана, Монголии, Грузии и Крыма. Просмотр треков gpx и kml, построение профиля рельефа по маршруту.">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+        <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-editable/1.2.0/Leaflet.Editable.min.js" integrity="sha512-QpANYNI4879TA/KVcjagBEb/XjOEzSg9Ge7DKWnLHEKaotUL0S0jOaKgxktFxsY7Lo5YTRXRFt/VHpEg4ifd5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" type="text/css" href="s.css%3Fedddff67fa5f437b.css" />
+        <style>.async-hide { opacity: 0 !important} </style>
+        <script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+        h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+        (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+        })(window,document.documentElement,'async-hide','dataLayer',4000,
+        {'GTM-TCSK895':true});</script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-70139986-1', 'auto');
+            ga('require', 'GTM-TCSK895');
+            ga('send', 'pageview');
+        </script>
+        <script type="text/javascript" src="https://yastatic.net/share2/share.js"></script>
+    </head>
+    <body>
+        <div id="help">
+            <div id="helpCloseBtn"></div>
+            <div class="content">
+                <div style="float: right;"><a href="http://sauropod.xyz/">en</a> / <b>ru</b></div>
+                <p><a href="https://youtu.be/7GnaSei_VWo" target="_blank">▶ Видеоинструкция</a></p>
+                <h1>Что это такое</h1>
+                <p>Эта карта показывает оцененную компьютерным алгоритмом по данным рельефа красоту вида,
+                открывающегося с каждой обработанной точки. Более тёплым цветам соответствуют более красивые места.</p>
+                <p>На настоящий момент построены карты горного Алтая, Хакасии, Тывы и Кузбасса, Грузии и Крыма, а также части Казахстана, окрестностей Байкала,
+                Дальнего Востока, Монголии, Гималаев и Альп.</p>
+                <p>Клавиша <b>Tab переключает карту подложки</b> с рельефа на спутник и обратно, <b>пробел переключает слои</b> видов и уклонов.</p>
+                <p><b>Прозрачность дополнительных слоёв можно менять</b>, повторно нажимая на их кнопки слева вверху или вращая колёсико мышки с нажатым Ctrl
+                (а если навести на кнопку слоя, то можно и без Ctrl).</p>
+                <h2>Как это работает</h2>
+                <p><b>При клике на карту</b> открывается информационное окно, показывающее координаты указанной точки и позволяющее перейти к 3D-виду
+                в онлайн-версии Google Earth (ваша система должна соответствовать некоторым
+                <a href="https://support.google.com/maps/answer/3096703" target="_blank">требованиям</a>) или PeakFinder. При включенном слое видов
+                автоматически выбирается наилучшая точка поблизости от места клика, для отключения этой поправки нужно
+                в момент клика удерживать нажатой клавишу Ctrl.</p>
+                <h2>Фотографии</h2>
+                <p>Кнопка «Фото» включает отображение слоя фотографий Flickr. Единовременно показывается
+                ограниченное число наиболее популярных снимков. Зачастую эта популярность является просто
+                следствием доступности места, поэтому если в интересующем вас месте фотографий не отображается,
+                но вообще на экране их много, попробуйте приблизить карту, чтобы отсечь часть фотографий.</p>
+                <p><small>Фотографии предоставлены Flickr. Права на фотографии принадлежат правообладателям фотографий.</small></p>
+                <h1>А дальше?</h1>
+                <p>Что, если красивое место хочется не только посмотреть в Google Maps, но и посетить лично (а это, как правило, стоит сделать)?
+                В этом может помочь слой уклонов рельефа, включающийся одной из кнопок слева вверху. Цвета означают примерно следующее
+                (в условиях сухой погоды и благоприятной для движения поверхности):</p>
+                <ul>
+                    <li>Синий-зелёный: угол менее 15 градусов, уклон менее 25%. Скорее всего, можно подняться на машине.</li>
+                    <li>Зелёный-жёлтый: 15-20 градусов, уклон до 36%. Ещё можно ехать, но уже страшновато.</li>
+                    <li>Жёлтый-красный: 20-30 градусов, до 60%. Заехать иногда можно, но по возможности лучше этого избегать. Пешком ещё вполне идётся.</li>
+                    <li>Красный-фиолетовый: 30-36 градусов, до 72%. Уклон типичного эскалатора. Иногда уже приходится карабкаться, а не идти.</li>
+                    <li>Фиолетовый: от 36 градусов.</li>
+                </ul>
+                <p><b>Режим редактирования маршрута</b> включается и выключается нажатием кнопки «Маршрут». В режиме редактирования клики по карте
+                добавляют точки к маршруту, удаляются точки правым кликом. Построив маршрут, можно появившейся кнопкой выгрузить его в формате gpx
+                или переслать, просто скопировав целиком адрес из адресной строки браузера.</p>
+                <p><b>Режим расстановки маркеров</b> включается и выключается клавишей «m». Как и маршрут, маркеры сохраняются в адресе страницы.</p>
+                <p>Связаться с автором можно по адресу <a href="mailto:mivlad@gmail.com">mivlad@gmail.com</a> или на <a href="http://forum.votetovid.ru/">форуме</a>.</p>
+            </div>
+        </div>
+        <div id="helpBtn">?</div>
+        <div id="map"></div>
+        <script src="lang-ru.js%3F9d4268ae4de960cc"></script>
+        <script src="script.js%3Ff8bb7c3e2506c44a"></script>
+        <!-- Yandex.Metrika counter --><script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter33823089 = new Ya.Metrika({ id:33823089, clickmap:true, trackLinks:true, accurateTrackBounce:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="https://mc.yandex.ru/watch/33823089" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+    </body>
+</html>

@@ -1,0 +1,497 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+
+body.profile #map {
+    bottom: 200px;
+}
+
+#profile {
+    display: none;
+    overflow: hidden;
+}
+
+#profile > svg {
+    display: block;
+    user-select: none;
+}
+
+#profile > .wait {
+    display: none;
+}
+
+#profile.wait {
+    pointer-events: none;
+}
+
+#profile.wait svg {
+    display: none;
+}
+
+#profile.wait > .wait {
+    display: block;
+}
+
+#profile > svg.wait circle {
+    fill: none;
+    stroke: #000;
+    animation: 1s ease-in-out infinite wait;
+}
+
+#profile > svg.wait circle:nth-child(1) {
+    animation-delay: 0;
+}
+
+#profile > svg.wait circle:nth-child(2) {
+    animation-delay: 100ms;
+}
+
+#profile > svg.wait circle:nth-child(3) {
+    animation-delay: 200ms;
+}
+
+@keyframes wait {
+    50% {transform: translateY(-15px); animation: ease-in;}
+    75% {transform: translateY(0px);}
+}
+
+#profile.error > svg {
+    display: none;
+}
+
+#profile > .error {
+    justify-content:center;
+    align-items:center;
+    height: 100%;
+    display: none;
+}
+
+#profile.error > .error {
+    display: flex;
+}
+
+body.profile #profile {
+    display: block;
+    position: absolute;
+    height: 200px;
+    width: 100%;
+    bottom: 0;
+}
+
+#profile #profile-nav-svg {
+    position: absolute;
+    bottom: -20%;
+    left: 0.5%;
+}
+
+#profile.zoomed #profile-nav-svg {
+    bottom: 0;
+    opacity: 0.3;
+    transition: opacity 2s ease 1s;
+}
+
+#profile #profile-nav-svg:hover {
+    opacity: 1;
+    transition: opacity 0.5s ease 0.1s;
+}
+
+#profile-nav-slider {
+    cursor: grabbing;
+}
+
+#profile-buttons circle {
+    fill: #fff;
+}
+
+#profile-buttons text {
+    text-anchor: middle;
+    dominant-baseline: middle;
+    stroke: none;
+}
+
+#profile-buttons-wrap {
+    opacity: 0;
+    transition: opacity 1s ease 1s;
+    cursor: pointer;
+}
+
+#profile-buttons-wrap:hover {
+    opacity: 1;
+    transition: opacity ease 0.2s;
+}
+
+body.viewshed #profile-crosshair {
+    opacity: 0.2;
+}
+
+body.viewshed #profile-text-jumpy {
+    opacity: 0.6;
+}
+
+.leaflet-grab {
+    cursor: crosshair;
+}
+
+#map.progress {
+    cursor: progress;
+}
+
+#map.mark {
+    /* перебиваем прицел Leaflet.Editable */
+    cursor: s-resize !important;
+    cursor: url(i/marker-cur.svg) 9 31, s-resize !important;
+}
+
+#map.vshmark {
+    /* перебиваем прицел Leaflet.Editable */
+    cursor: s-resize !important;
+    cursor: url(i/viewshed-marker-cur.svg) 9 31, s-resize !important;
+}
+
+.leaflet-dragging #map {
+    /* перебиваем прицел Leaflet.Editable при таскании его же узлов */
+    cursor: grabbing !important;
+}
+
+#map .leaflet-vPhotos-pane {
+    z-index: 630;
+}
+
+#map .leaflet-vMarkers-pane {
+    z-index: 620;
+}
+
+#map .leaflet-vMarkers-pane div {
+    pointer-events: none;
+}
+
+#map.mark .leaflet-vMarkers-pane div svg path {
+    pointer-events: auto;
+}
+
+#map .leaflet-vTopics-pane {
+    z-index: 610;
+}
+
+#map .leaflet-vTopics-pane div {
+    pointer-events: none;
+}
+
+#map .leaflet-vTopics-pane div svg * {
+    pointer-events: auto;
+}
+
+.infoW .leaflet-popup-tip, .infoW .leaflet-popup-content-wrapper {
+    opacity: 0.8;
+    color: black;
+}
+
+.leaflet-popup-content {
+    margin: 12px;
+    font-size: 13px;
+}
+
+#map a.leaflet-popup-close-button {
+    color: #777;
+}
+
+#map a.leaflet-popup-close-button:hover {
+    color: #000;
+}
+
+.leaflet-container a {
+    color: #00e;
+}
+
+.leaflet-control-attribution a {
+    color: #333;
+}
+
+
+
+#help {
+    background: white;
+    position: absolute;
+    height: 80%;
+    top: 10%;
+    width: 95%;
+    max-width: 800px;
+    left: -900px;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 0 40px rgba(0,0,0,.3);
+    z-index: 2;
+    transition: left 0.5s;
+}
+
+#helpCloseBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #555;
+    font-size: 20px;
+    text-shadow: 0 1px 2px #777;
+    cursor: pointer;
+}
+
+#helpCloseBtn:after {
+    content: '❌';
+}
+
+#help .content {
+    argin: 20px 30px;
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 30px;
+    right: 40px;
+    padding-right: 10px;
+    overflow: auto;
+}
+
+#help.slide-out {
+    left: -900px;
+}
+
+#help.slide-in {
+    left: 0;
+}
+
+#helpBtn {
+    background: #fff;
+    border-radius: 0 2px 2px 0;
+    box-shadow: rgba(0,0,0,.3) 0 1px 4px -1px;
+    cursor: pointer;
+    padding: 12px 8px;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    font-size: 11px;
+}
+
+.btnGroup {
+    margin: 10px;
+    box-shadow: rgba(0,0,0,.7) 0 1px 6px 0;
+    user-select: none;
+}
+
+.btnGroup .btn {
+    background: #fff;
+    cursor: pointer;
+    padding: 8px;
+    display: inline-block;
+    color: #555;
+    border-left: 1px solid #ddd;
+}
+
+.btnGroup .btn.cur {
+    font-weight: bold;
+    color: #000;
+}
+
+.btnGroup .btn:first-child {
+    border-left-width: 0;
+}
+
+.btnGroup.closed .btn:first-child {
+    display: inline-block;
+}
+
+.btnGroup.closed .btn {
+    display: none;
+}
+
+.btnGroup .btn.undo {
+    display: none;
+}
+
+.btnGroup.canundo .btn.undo {
+    display: inline-block;
+}
+
+@media (pointer: coarse) {
+    #helpBtn {
+        padding: 12px;
+    }
+
+    .btnGroup .btn {
+        padding: 11px;
+    }
+}
+
+#trkGroup .meter {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    padding: 4px 10px;
+    opacity: 0.8;
+    z-index: -1;
+    cursor: auto;
+}
+
+#trkGroup .btn.trkLoad {
+    display: inline-block;
+}
+
+#trkGroup .trkLoad input {
+    display: none;
+}
+
+.btnGroup .cfgw {
+    display: none;
+    position: absolute;
+    top: 34px;
+    left: 0;
+    padding: 0px 10px;
+    opacity: 0.8;
+    z-index: -1;
+    cursor: auto;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.btnGroup .cfgw.show {
+    display: inline-block;
+}
+
+input[type="radio"] {
+    margin-top: -1px;
+    vertical-align: middle;
+}
+
+.btnGroup .cfgw input[type="number"] {
+    text-align: right;
+    width: 4em;
+}
+
+#vshGroup {
+    z-index: 801; /* для окошка настроек */
+}
+
+#vshGroup .clear {
+    display: none;
+}
+
+#vshMarker .loaded {
+    display: none;
+}
+
+#vshMarker.loaded .loaded {
+    display: block;
+}
+
+#vshMarker.loaded .loading {
+    display: none;
+}
+
+body.viewshed #vshGroup .clear {
+    display: inline-block;
+}
+
+.vshmark #vshGroup .clear {
+    display: inline-block;
+}
+
+.contextm {
+    position: absolute;
+    padding: 8px;
+    box-shadow: rgba(0,0,0,.7) 0 1px 6px 0;
+    background: white;
+    color: #555;
+    z-index: 1;
+    display: none;
+}
+
+.contextm ul {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+}
+
+.contextm li {
+    border-top: 1px solid #ddd;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.contextm li:hover {
+    background: #eee;
+}
+
+ul.menu {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+}
+
+ul.menu li {
+    border-top: 1px solid #ddd;
+    padding: 8px;
+    cursor: pointer;
+}
+
+ul.menu li:hover {
+    background: #eee;
+}
+
+.infoW ul.menu {
+    margin: 4px -6px;
+    border-bottom: 1px solid #ddd;
+}
+
+.infoW ul.menu li {
+    padding: 2px 6px;
+}
+
+img[src$="_s.jpg"][src*="staticflickr"] {
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+.exp-only {
+    display: none;
+}
+
+.exp .exp-only {
+    display: block;
+}
+
+.exp .exp-hide {
+    display: none;
+}
+
+#link3d, #linkPeakFinder, #linkGE {
+    display: block;
+}
+
+.infoW a {
+    display: block;
+    color: #ccc;
+}
+
+.infoW a[href] {
+    color: #00e;
+}
+
+#forumlink[href*="viewtopic"] {
+    font-weight: 700;
+    padding-left: 18px;
+    padding: 4px 0 4px 24px;
+    display: block;
+    background: url(i/bubble24.png) 0 0 no-repeat;
+}
